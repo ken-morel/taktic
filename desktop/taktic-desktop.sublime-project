@@ -2,39 +2,43 @@
     "folders": [
         {
             "path": ".",
+            "index_include_patterns": ["*.py", "*/*.py"],
+        },
+        {
+            "path": "C:\\taktk\\src\\taktk",
+            /*"index_include_patterns": ["*.py", "* /*.py"],*/
         },
         {
 			"path": "C:\\Program Files\\Python313\\Lib",
+		
+            "index_include_patterns":
+            [
+				"*.py",
+				"*/*.py"
+            ],
+        },
+        {
+			"path": "C:\\taktk\\examples\\todoapp",
 		},
     ],
     "build_systems": [
         {
             "file_regex": "^[ ]*error: cannot format (...*?): Cannot parse: ([0-9]*):\\d+:.+",
-            "name": "Black taktk",
-            "shell_cmd": "black \"$project_path\" --config \"$project_path\"/pyproject.toml",
-        },
-        {
-            "file_regex": "^[ ]*error: cannot format (...*?): Cannot parse: ([0-9]*):\\d+:.+",
             "name": "isort taktk",
             "shell_cmd": "isort . --sl",
-            "working_dir": "$project_path/src",
+            "working_dir": "$project_path",
         },
         {
             "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-            "name": "Anaconda Python Builder",
-            "selector": "source.python",
-            "shell_cmd": "\"python\" -u \"$file\"",
+            "name": "Taktic",
+            "cmd": ["py", "-3.12", "$project_path/main.py"],
+            "working_dir": "$project_path",
         },
         {
-            "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
-            "name": "Taktk",
-            "cmd": ["py", "-3.12", "$project_path/examples/todoapp/main.py"],
-            "working_dir": "$project_path/examples/locale",
-        },
+			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+			"name": "Anaconda Python Builder",
+			"selector": "source.python",
+			"shell_cmd": "\"python\" -u \"$file\""
+		},
     ],
-    "settings": {
-        "python_interpreter": "$VIRTUAL_ENV/Scripts/python.exe",
-        "anaconda_linter_phantoms": true,
-        "validate_imports": true,
-    },
 }

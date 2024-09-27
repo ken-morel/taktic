@@ -1,1 +1,1 @@
-mondod --dbpath . --logpath ./log.log --wiredTigerCacheSizeGB 10MB --cpu --quiet --listenBacklog 5 --maxConns 5
+mongod --dbpath . --wiredTigerCacheSizeGB 0.25 --cpu --quiet --listenBacklog 5 --maxConns 5
